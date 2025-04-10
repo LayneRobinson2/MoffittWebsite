@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From Source Code to Binary: Step 1</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-code"></i> From Source Code to Binary</h1>
+            <nav>
+                <ul>
+                    <li class="active"><a href="#"><i class="fas fa-pencil-alt"></i> Step 1: Writing Source Code</a></li>
+                    <li><a href="compilation.html"><i class="fas fa-language"></i> Step 2: Compilation</a></li>
+                    <li><a href="assembly.html"><i class="fas fa-cogs"></i> Step 3: Assembly</a></li>
+                    <li><a href="binary.html"><i class="fas fa-microchip"></i> Step 4: Executable Binary</a></li>
+                    <li><a href="example.html"><i class="fas fa-laptop-code"></i> Complete Example</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="step-content">
+            <div class="step-header">
+                <div class="step-number">1</div>
+                <h2>Writing Source Code</h2>
+            </div>
+            
+            <div class="explanation">
+                <p>Source code is like a recipe written in a language that humans can understand, but computers need to translate.</p>
+                
+                <div class="visual-example">
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                            <span class="filename">helloWorld.js</span>
+                        </div>
+                        <pre><code class="language-javascript">// This is source code - human readable!
+function sayHello() {
+    console.log("Hello, World!");
+}
+
+sayHello();</code></pre>
+                    </div>
+                    
+                    <div class="explanation-box">
+                        <h3><i class="fas fa-lightbulb"></i> What is Source Code?</h3>
+                        <p>Source code is text written by programmers that contains instructions for the computer. It's written in programming languages like JavaScript, Python, or C++.</p>
+                        <p>Think of it like writing instructions for a friend in English - it's in a language humans can read and understand.</p>
+                    </div>
+                </div>
+                
+                <div class="key-points">
+                    <h3><i class="fas fa-key"></i> Key Points About Source Code:</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> <strong>Human Readable:</strong> Written in languages designed for people to understand</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Text Files:</strong> Stored as simple text files with special extensions (.js, .py, .cpp)</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Instructions:</strong> Contains commands that tell the computer what to do</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Not Executable:</strong> Computers can't directly run source code - it needs translation</li>
+                    </ul>
+                </div>
+                
+                <div class="real-world">
+                    <h3><i class="fas fa-globe"></i> Real World Analogy</h3>
+                    <div class="analogy-container">
+                        <div class="analogy-image">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="analogy-text">
+                            <p>Source code is like a recipe in a cookbook. The recipe is written in a human language with instructions that people can follow. But before the meal appears on your plate, someone needs to read the recipe, gather ingredients, and follow the steps to transform those raw ingredients into a finished dish.</p>
+                            <p>Similarly, source code needs to be transformed into machine instructions before the computer can "eat" (execute) it!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="navigation-buttons">
+                <a href="#" class="button disabled"><i class="fas fa-arrow-left"></i> Previous</a>
+                <a href="compilation.html" class="button next"><i class="fas fa-arrow-right"></i> Next: Compilation</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Code Journey | A visual guide to how computers understand code</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    
+    <script src="script.js"></script>
+</body>
+</html>

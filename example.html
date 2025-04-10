@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From Source Code to Binary: Complete Example</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Add Prism CSS for dark theme -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-code"></i> From Source Code to Binary</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-pencil-alt"></i> Step 1: Writing Source Code</a></li>
+                    <li><a href="compilation.html"><i class="fas fa-language"></i> Step 2: Compilation</a></li>
+                    <li><a href="assembly.html"><i class="fas fa-cogs"></i> Step 3: Assembly</a></li>
+                    <li><a href="binary.html"><i class="fas fa-microchip"></i> Step 4: Executable Binary</a></li>
+                    <li class="active"><a href="#"><i class="fas fa-laptop-code"></i> Complete Example</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="step-content">
+            <div class="step-header">
+                <div class="step-number"><i class="fas fa-star"></i></div>
+                <h2>Complete Example: Temperature Converter</h2>
+            </div>
+            
+            <div class="explanation">
+                <p>Let's follow a real application through all four steps of the journey from source code to binary. We'll build a simple temperature converter that converts Celsius to Fahrenheit.</p>
+                
+                <div class="example-app">
+                    <div class="app-preview">
+                        <div class="app-window">
+                            <div class="app-header">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                                <span class="app-title">Temperature Converter</span>
+                            </div>
+                            <div class="app-content">
+                                <div class="app-ui">
+                                    <div class="app-input">
+                                        <label for="celsius">Celsius:</label>
+                                        <input type="number" id="celsius" value="25">
+                                    </div>
+                                    <div class="app-output">
+                                        <label>Fahrenheit:</label>
+                                        <div class="result">77.0°F</div>
+                                    </div>
+                                    <button class="convert-btn">Convert</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="app-description">
+                        <h3><i class="fas fa-info-circle"></i> About This Example</h3>
+                        <p>This temperature converter is a simple C program that:</p>
+                        <ul>
+                            <li>Takes a Celsius temperature as input</li>
+                            <li>Converts it to Fahrenheit using the formula: F = C × 9/5 + 32</li>
+                            <li>Displays the result</li>
+                        </ul>
+                        <p>We'll follow this program through each step of the compilation process.</p>
+                    </div>
+                </div>
+                
+                <div class="step-by-step">
+                    <h3><i class="fas fa-list-ol"></i> Step-by-Step Journey</h3>
+                    
+                    <div class="journey-step-container">
+                        <div class="journey-step-header">
+                            <div class="step-icon"><i class="fas fa-pencil-alt"></i></div>
+                            <h4>Step 1: Writing Source Code</h4>
+                        </div>
+                        <div class="journey-step-content">
+                            <p>First, we write our temperature converter program in C:</p>
+                            <div class="code-container">
+                                <div class="code-header">
+                                    <span class="dot red"></span>
+                                    <span class="dot yellow"></span>
+                                    <span class="dot green"></span>
+                                    <span class="filename">temp_converter.c</span>
+                                </div>
+                                <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+// Function to convert Celsius to Fahrenheit
+float celsiusToFahrenheit(float celsius) {
+    return celsius * 9.0 / 5.0 + 32.0;
+}
+
+int main() {
+    float celsius, fahrenheit;
+    
+    // Get input from user
+    printf("Enter temperature in Celsius: ");
+    scanf("%f", &celsius);
+    
+    // Convert Celsius to Fahrenheit
+    fahrenheit = celsiusToFahrenheit(celsius);
+    
+    // Display the result
+    printf("%.1f°C is equal to %.1f°F\n", celsius, fahrenheit);
+    
+    return 0;
+}</code></pre>
+                            </div>
+                            <div class="step-explanation">
+                                <p>In this step, we've written human-readable source code that:</p>
+                                <ul>
+                                    <li>Includes the standard I/O library for input/output functions</li>
+                                    <li>Defines a function to convert Celsius to Fahrenheit</li>
+                                    <li>Creates a main function that gets user input and displays the result</li>
+                                </ul>
+                                <p>This code is easy for humans to understand but needs to be transformed for the computer to execute it.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="journey-step-container">
+                        <div class="journey-step-header">
+                            <div class="step-icon"><i class="fas fa-language"></i></div>
+                            <h4>Step 2: Compilation</h4>
+                        </div>
+                        <div class="journey-step-content">
+                            <p>Next, we compile our source code into object code:</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="dot red"></span>
+                                    <span class="dot yellow"></span>
+                                    <span class="dot green"></span>
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-content">
+                                    <pre><code class="language-bash">gcc -c temp_converter.c -o temp_converter.o</code></pre>
+                                </div>
+                            </div>
+                            <p>The compiler transforms our C code into object code, which includes:</p>
+                            <div class="code-container">
+                                <div class="code-header">
+                                    <span class="dot red"></span>
+                                    <span class="dot yellow"></span>
+                                    <span class="dot green"></span>
+                                    <span class="filename">temp_converter.o (Object Code Representation)</span>
+                                </div>
+                                <pre><code class="language-c">// Intermediate Representation (simplified)
+define float @celsiusToFahrenheit(float %celsius) {
+  %0 = fmul float %celsius, 9.000000e+00
+  %1 = fdiv float %0, 5.000000e+00
+  %2 = fadd float %1, 3.200000e+01
+  ret float %2
+}
+
+define i32 @main() {
+  %celsius = alloca float
+  %fahrenheit = alloca float
+  
+  call i32 @printf(i8* "Enter temperature in Celsius: ")
+  call i32 @scanf(i8* "%f", float* %celsius)
+  
+  %0 = load float, float* %celsius
+  %1 = call float @celsiusToFahrenheit(float %0)
+  store float %1, float* %fahrenheit
+  
+  %2 = load float, float* %celsius
+  %3 = load float, float* %fahrenheit
+  call i32 @printf(i8* "%.1f°C is equal to %.1f°F\n", float %2, float %3)
+  
+  ret i32 0
+}</code></pre>
+                            </div>
+                            <div class="step-explanation">
+                                <p>During compilation:</p>
+                                <ul>
+                                    <li>The C code is parsed and checked for syntax errors</li>
+                                    <li>The code is transformed into an intermediate representation</li>
+                                    <li>Optimizations are applied to make the code more efficient</li>
+                                    <li>The result is object code that's closer to machine code but not yet executable</li>
+                                </ul>
+                                <p>The object file contains machine code but still needs to be linked with libraries and converted to a format the operating system can run.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="journey-step-container">
+                        <div class="journey-step-header">
+                            <div class="step-icon"><i class="fas fa-cogs"></i></div>
+                            <h4>Step 3: Assembly</h4>
+                        </div>
+                        <div class="journey-step-content">
+                            <p>The object code is then converted to assembly language:</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="dot red"></span>
+                                    <span class="dot yellow"></span>
+                                    <span class="dot green"></span>
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-content">
+                                    <pre><code class="language-bash">objdump -d temp_converter.o</code></pre>
+                                </div>
+                            </div>
+                            <div class="code-container">
+                                <div class="code-header">
+                                    <span class="dot red"></span>
+                                    <span class="dot yellow"></span>
+                                    <span class="dot green"></span>
+                                    <span class="filename">Assembly Code for celsiusToFahrenheit function</span>
+                                </div>
+                                <pre><code class="language-x86asm">0000000000000000 &lt;celsiusToFahrenheit&gt;:
+   0:   f3 0f 1e fa             endbr64 
+   4:   55                      push   %rbp
+   5:   48 89 e5                mov    %rsp,%rbp
+   8:   f3 0f 11 45 fc          movss  %xmm0,-0x4(%rbp)
+   d:   f3 0f 10 45 fc          movss  -0x4(%rbp),%xmm0
+  12:   f3 0f 59 05 00 00 00    mulss  0x0(%rip),%xmm0
+  19:   00 
+  1a:   f3 0f 5e 05 00 00 00    divss  0x0(%rip),%xmm0
+  21:   00 
+  22:   f3 0f 58 05 00 00 00    addss  0x0(%rip),%xmm0
+  29:   00 
+  2a:   5d                      pop    %rbp
+  2b:   c3                      ret</code></pre>
+                            </div>
+                            <div class="step-explanation">
+                                <p>In the assembly stage:</p>
+                                <ul>
+                                    <li>The object code is translated into assembly language specific to the target CPU architecture (x86-64 in this example)</li>
+                                    <li>Each line represents a specific CPU instruction</li>
+                                    <li>Instructions like <code>movss</code>, <code>mulss</code>, and <code>addss</code> are used for floating-point operations</li>
+                                    <li>The code works directly with CPU registers and memory addresses</li>
+                                </ul>
+                                <p>Assembly code is the last human-readable representation before the final binary form.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="journey-step-container">
+                        <div class="journey-step-header">
+                            <div class="step-icon"><i class="fas fa-microchip"></i></div>
+                            <h4>Step 4: Executable Binary</h4>
+                        </div>
+                        <div class="journey-step-content">
+                            <p>Finally, we create the executable binary:</p>
+                            <div class="terminal">
+                                <div class="terminal-header">
+                                    <span class="dot red"></span>
+                                    <span class="dot yellow"></span>
+                                    <span class="dot green"></span>
+                                    <span class="terminal-title">Terminal</span>
+                                </div>
+                                <div class="terminal-content">
+                                    <pre><code class="language-bash">gcc temp_converter.o -o temp_converter
+file temp_converter
+./temp_converter</code></pre>
+                                </div>
+                            </div>
+                            <div class="code-container">
+                                <div class="code-header">
+                                    <span class="dot red"></span>
+                                    <span class="dot yellow"></span>
+                                    <span class="dot green"></span>
+                                    <span class="filename">Binary Representation (Hexdump)</span>
+                                </div>
+                                <pre><code class="language-text">00000000: 7f45 4c46 0201 0100 0000 0000 0000 0000  .ELF............
+00000010: 0300 3e00 0100 0000 e010 0000 0000 0000  ..>.............
+00000020: 4000 0000 0000 0000 7832 0000 0000 0000  @.......x2......
+00000030: 0000 0000 4000 3800 0d00 4000 1e00 1d00  ....@.8...@.....
+...
+00000ff0: 2e31 66c2 b043 2069 7320 6571 7561 6c20  .1f..C is equal 
+00001000: 746f 2025 2e31 66c2 b046 0a00 456e 7465  to %.1f..F..Ente
+00001010: 7220 7465 6d70 6572 6174 7572 6520 696e  r temperature in
+00001020: 2043 656c 7369 7573 3a20 0000 0000 0000   Celsius: ......
+...</code></pre>
+                            </div>
+                            <div class="step-explanation">
+                                <div class="step-explanation">
+                                    <p>In the final step:</p>
+                                    <ul>
+                                        <li>The object file is linked with necessary libraries (like the C standard library)</li>
+                                        <li>An executable binary file is created in the format specific to the operating system (ELF for Linux)</li>
+                                        <li>The binary contains machine code instructions that the CPU can directly execute</li>
+                                        <li>It also includes data like the string literals ("Enter temperature in Celsius:", etc.)</li>
+                                        <li>The binary is now ready to be loaded and executed by the operating system</li>
+                                    </ul>
+                                    <p>This binary file is no longer human-readable but contains everything needed for the program to run.</p>
+                                </div>
+                                
+                                <div class="program-execution">
+                                    <h4><i class="fas fa-play-circle"></i> Program Execution</h4>
+                                    <div class="terminal">
+                                        <div class="terminal-header">
+                                            <span class="dot red"></span>
+                                            <span class="dot yellow"></span>
+                                            <span class="dot green"></span>
+                                            <span class="terminal-title">Program Output</span>
+                                        </div>
+                                        <div class="terminal-content">
+                                            <pre><code class="language-text">$ ./temp_converter
+    Enter temperature in Celsius: 25
+    25.0°C is equal to 77.0°F</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="behind-scenes">
+                        <h3><i class="fas fa-film"></i> Behind the Scenes: What's Happening</h3>
+                        
+                        <div class="process-visualization">
+                            <div class="process-flow">
+                                <div class="process-node source">
+                                    <div class="node-icon"><i class="fas fa-file-code"></i></div>
+                                    <div class="node-label">Source Code</div>
+                                    <div class="node-details">
+                                        <p>Human-readable C code</p>
+                                        <p>Logical structure and algorithms</p>
+                                    </div>
+                                </div>
+                                <div class="process-arrow">
+                                    <i class="fas fa-long-arrow-alt-right"></i>
+                                    <div class="process-label">Compiler (gcc)</div>
+                                </div>
+                                <div class="process-node object">
+                                    <div class="node-icon"><i class="fas fa-file-alt"></i></div>
+                                    <div class="node-label">Object Code</div>
+                                    <div class="node-details">
+                                        <p>Machine code with placeholders</p>
+                                        <p>Unresolved references</p>
+                                    </div>
+                                </div>
+                                <div class="process-arrow">
+                                    <i class="fas fa-long-arrow-alt-right"></i>
+                                    <div class="process-label">Assembler</div>
+                                </div>
+                                <div class="process-node assembly">
+                                    <div class="node-icon"><i class="fas fa-cogs"></i></div>
+                                    <div class="node-label">Assembly Code</div>
+                                    <div class="node-details">
+                                        <p>CPU-specific instructions</p>
+                                        <p>Register and memory operations</p>
+                                    </div>
+                                </div>
+                                <div class="process-arrow">
+                                    <i class="fas fa-long-arrow-alt-right"></i>
+                                    <div class="process-label">Linker</div>
+                                </div>
+                                <div class="process-node binary">
+                                    <div class="node-icon"><i class="fas fa-microchip"></i></div>
+                                    <div class="node-label">Executable Binary</div>
+                                    <div class="node-details">
+                                        <p>Complete machine code</p>
+                                        <p>Ready to execute</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="memory-representation">
+                            <h4><i class="fas fa-memory"></i> Memory Layout During Execution</h4>
+                            <div class="memory-layout">
+                                <div class="memory-section stack">
+                                    <div class="section-label">Stack</div>
+                                    <div class="section-content">
+                                        <div class="memory-item">Return address</div>
+                                        <div class="memory-item">celsius variable (25.0)</div>
+                                        <div class="memory-item">fahrenheit variable (77.0)</div>
+                                    </div>
+                                </div>
+                                <div class="memory-section heap">
+                                    <div class="section-label">Heap</div>
+                                    <div class="section-content">
+                                        <div class="memory-item">Dynamically allocated memory (if any)</div>
+                                    </div>
+                                </div>
+                                <div class="memory-section data">
+                                    <div class="section-label">Data</div>
+                                    <div class="section-content">
+                                        <div class="memory-item">"Enter temperature in Celsius: "</div>
+                                        <div class="memory-item">"%.1f°C is equal to %.1f°F\n"</div>
+                                        <div class="memory-item">Constants (9.0, 5.0, 32.0)</div>
+                                    </div>
+                                </div>
+                                <div class="memory-section text">
+                                    <div class="section-label">Text (Code)</div>
+                                    <div class="section-content">
+                                        <div class="memory-item">main() function</div>
+                                        <div class="memory-item">celsiusToFahrenheit() function</div>
+                                        <div class="memory-item">printf() function (from libc)</div>
+                                        <div class="memory-item">scanf() function (from libc)</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="interactive-demo">
+                        <h3><i class="fas fa-hand-pointer"></i> Try It Yourself</h3>
+                        <p>Here's a simplified interactive version of our temperature converter. Enter a value in Celsius to see the conversion to Fahrenheit:</p>
+                        
+                        <div class="interactive-converter">
+                            <div class="converter-input">
+                                <label for="interactive-celsius">Temperature in Celsius:</label>
+                                <input type="number" id="interactive-celsius" value="0">
+                            </div>
+                            <button id="convert-button">Convert</button>
+                            <div class="converter-output">
+                                <label>Temperature in Fahrenheit:</label>
+                                <div id="fahrenheit-result">32.0°F</div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-execution">
+                            <h4>Code Execution Visualization</h4>
+                            <div class="execution-steps">
+                                <div class="execution-step" id="step1">
+                                    <div class="step-number">1</div>
+                                    <div class="step-desc">Get input value from user</div>
+                                </div>
+                                <div class="execution-step" id="step2">
+                                    <div class="step-number">2</div>
+                                    <div class="step-desc">Call celsiusToFahrenheit function</div>
+                                </div>
+                                <div class="execution-step" id="step3">
+                                    <div class="step-number">3</div>
+                                    <div class="step-desc">Calculate: celsius * 9/5 + 32</div>
+                                </div>
+                                <div class="execution-step" id="step4">
+                                    <div class="step-number">4</div>
+                                    <div class="step-desc">Return result to main function</div>
+                                </div>
+                                <div class="execution-step" id="step5">
+                                    <div class="step-number">5</div>
+                                    <div class="step-desc">Display result to user</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="summary">
+                        <h3><i class="fas fa-check-circle"></i> Summary</h3>
+                        <p>In this example, we've seen how a simple temperature converter program travels through all four stages of the compilation process:</p>
+                        <ol>
+                            <li><strong>Source Code:</strong> We wrote human-readable C code that defines the logic for converting Celsius to Fahrenheit.</li>
+                            <li><strong>Compilation:</strong> The compiler transformed our C code into object code, applying optimizations along the way.</li>
+                            <li><strong>Assembly:</strong> The code was converted to assembly language with CPU-specific instructions.</li>
+                            <li><strong>Executable Binary:</strong> Finally, the code was linked and packaged into an executable binary that can run on the target system.</li>
+                        </ol>
+                        <p>This journey from high-level source code to machine-executable binary is what enables us to write programs in human-friendly languages while still allowing computers to execute them efficiently.</p>
+                    </div>
+                </div>
+                
+                <div class="navigation-buttons">
+                    <a href="binary.html" class="button"><i class="fas fa-arrow-left"></i> Previous: Executable Binary</a>
+                    <a href="index.html" class="button next"><i class="fas fa-home"></i> Back to Start</a>
+                </div>
+            </section>
+        </main>
+    
+        <footer>
+            <div class="container">
+                <p>&copy; 2023 Code Journey | A visual guide to how computers understand code</p>
+            </div>
+        </footer>
+    
+        <!-- Add Prism JS for syntax highlighting -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+        
+        <script>
+            // Interactive temperature converter
+            document.addEventListener('DOMContentLoaded', function() {
+                const celsiusInput = document.getElementById('interactive-celsius');
+                const convertButton = document.getElementById('convert-button');
+                const fahrenheitResult = document.getElementById('fahrenheit-result');
+                const executionSteps = document.querySelectorAll('.execution-step');
+                
+                function convertTemperature() {
+                    // Reset all steps
+                    executionSteps.forEach(step => {
+                        step.classList.remove('active');
+                    });
+                    
+                    // Step 1: Get input
+                    setTimeout(() => {
+                        document.getElementById('step1').classList.add('active');
+                        
+                        // Step 2: Call function
+                        setTimeout(() => {
+                            document.getElementById('step2').classList.add('active');
+                            
+                            // Step 3: Calculate
+                            setTimeout(() => {
+                                document.getElementById('step3').classList.add('active');
+                                const celsius = parseFloat(celsiusInput.value) || 0;
+                                const fahrenheit = celsius * 9/5 + 32;
+                                
+                                // Step 4: Return result
+                                setTimeout(() => {
+                                    document.getElementById('step4').classList.add('active');
+                                    
+                                    // Step 5: Display result
+                                    setTimeout(() => {
+                                        document.getElementById('step5').classList.add('active');
+                                        fahrenheitResult.textContent = fahrenheit.toFixed(1) + '°F';
+                                    }, 500);
+                                }, 500);
+                            }, 500);
+                        }, 500);
+                    }, 100);
+                }
+                
+                convertButton.addEventListener('click', convertTemperature);
+                
+                // Initial conversion
+                convertTemperature();
+            });
+        </script>
+    </body>
+</html>    

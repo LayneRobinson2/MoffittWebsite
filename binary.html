@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From Source Code to Binary: Step 4</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Add Prism CSS for dark theme -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-code"></i> From Source Code to Binary</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-pencil-alt"></i> Step 1: Writing Source Code</a></li>
+                    <li><a href="compilation.html"><i class="fas fa-language"></i> Step 2: Compilation</a></li>
+                    <li><a href="assembly.html"><i class="fas fa-cogs"></i> Step 3: Assembly</a></li>
+                    <li class="active"><a href="#"><i class="fas fa-microchip"></i> Step 4: Executable Binary</a></li>
+                    <li><a href="example.html"><i class="fas fa-laptop-code"></i> Complete Example</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="step-content">
+            <div class="step-header">
+                <div class="step-number">4</div>
+                <h2>Executable Binary</h2>
+            </div>
+            
+            <div class="explanation">
+                <p>The final step in the journey from source code to execution is creating an executable binary file. This is the format that your computer's operating system can directly load and run.</p>
+                
+                <div class="visual-example">
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                            <span class="filename">Binary Representation</span>
+                        </div>
+                        <pre><code class="language-text">00100111 01101111 00100000 01010111 01101111 01110010 01101100 01100100
+01001101 01011010 00100000 01011000 01000000 00100000 00000101 00000000
+01000000 00000101 00000000 00000000 00000000 00000000 00000000 00000000
+00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+01001000 01100101 01101100 01101100 01101111 00101100 00100000 01010111
+01101111 01110010 01101100 01100100 00100001 00001010 00000000 00000000
+
+...
+
+11101000 11000011 11111110 11111111 11111111 10111000 00000000 00000000
+00000000 00000000 01011101 11000011 00000000 00000000 00000000 00000000</code></pre>
+                    </div>
+                    
+                    <div class="explanation-box">
+                        <h3><i class="fas fa-microchip"></i> What is an Executable Binary?</h3>
+                        <p>An executable binary is a file containing machine code instructions that can be directly executed by a computer's CPU. It's the final product of the compilation and assembly process.</p>
+                        <p>Binary files contain:</p>
+                        <ul>
+                            <li>Machine code instructions (0s and 1s)</li>
+                            <li>Data sections for variables and constants</li>
+                            <li>Metadata for the operating system</li>
+                            <li>Information about required libraries</li>
+                            <li>Entry point information</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="key-points">
+                    <h3><i class="fas fa-key"></i> Key Points About Executable Binaries:</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> <strong>Platform-Specific:</strong> Binaries are specific to an operating system and CPU architecture</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Ready to Run:</strong> No further translation needed - the CPU can directly execute these instructions</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>File Formats:</strong> Different operating systems use different formats (ELF for Linux, PE for Windows, Mach-O for macOS)</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Linking:</strong> The process of combining multiple object files and libraries into a single executable</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Not Human-Readable:</strong> Binary files are meant for machines, not humans to read</li>
+                    </ul>
+                </div>
+                
+                <div class="binary-diagram">
+                    <h3><i class="fas fa-project-diagram"></i> Executable Binary Structure</h3>
+                    <div class="binary-structure">
+                        <div class="structure-section header">
+                            <div class="section-title">Header</div>
+                            <div class="section-desc">Contains metadata about the file format, architecture, entry point</div>
+                        </div>
+                        <div class="structure-section code">
+                            <div class="section-title">Code Section (.text)</div>
+                            <div class="section-desc">Contains executable machine code instructions</div>
+                        </div>
+                        <div class="structure-section data">
+                            <div class="section-title">Data Section (.data)</div>
+                            <div class="section-desc">Contains initialized variables and constants</div>
+                        </div>
+                        <div class="structure-section bss">
+                            <div class="section-title">BSS Section (.bss)</div>
+                            <div class="section-desc">Space for uninitialized variables</div>
+                        </div>
+                        <div class="structure-section symbols">
+                            <div class="section-title">Symbol Table</div>
+                            <div class="section-desc">Maps names to addresses in the program</div>
+                        </div>
+                        <div class="structure-section reloc">
+                            <div class="section-title">Relocation Information</div>
+                            <div class="section-desc">Information for the dynamic linker</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="real-world">
+                    <h3><i class="fas fa-globe"></i> Real World Analogy</h3>
+                    <div class="analogy-container">
+                        <div class="analogy-image">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="analogy-text">
+                            <p>If source code is like a recipe in a cookbook, and compilation/assembly are like translating and breaking down that recipe, then the executable binary is like a pre-programmed cooking robot.</p>
+                            <p>The robot doesn't need to understand the original recipe or even the translation - it just follows the precise, step-by-step electronic instructions it was given. These instructions are in the only language it understands: binary signals (on/off, 1/0).</p>
+                            <p>Just as different robot models might require different instruction sets, different computer architectures (like x86 or ARM) require different binary code.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="code-example">
+                    <h3><i class="fas fa-terminal"></i> Creating an Executable</h3>
+                    <p>Here's how you might create an executable from object files:</p>
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                            <span class="terminal-title">Terminal</span>
+                        </div>
+                        <div class="terminal-content">
+                            <pre><code class="language-bash"># Compile source to object file
+gcc -c hello.c -o hello.o
+
+# Link the object file to create an executable
+gcc hello.o -o hello
+
+# Examine the binary file format
+file hello
+hello: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, ...
+
+# Run the executable
+./hello
+Hello, World!</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="binary-viewer">
+                    <h3><i class="fas fa-eye"></i> Viewing Binary Files</h3>
+                    <p>You can examine binary files using tools like <code>hexdump</code> or <code>xxd</code>:</p>
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                            <span class="terminal-title">Hexdump Output</span>
+                        </div>
+                        <div class="terminal-content">
+                            <pre><code class="language-text">$ hexdump -C hello | head -20
+00000000  7f 45 4c 46 02 01 01 00  00 00 00 00 00 00 00 00  |.ELF............|
+00000010  03 00 3e 00 01 00 00 00  40 11 00 00 00 00 00 00  |..>.....@.......|
+00000020  40 00 00 00 00 00 00 00  78 39 00 00 00 00 00 00  |@.......x9......|
+00000030  00 00 00 00 40 00 38 00  0d 00 40 00 1e 00 1d 00  |....@.8...@.....|
+00000040  06 00 00 00 04 00 00 00  40 00 00 00 00 00 00 00  |........@.......|
+00000050  40 00 00 00 00 00 00 00  40 00 00 00 00 00 00 00  |@.......@.......|
+00000060  f8 01 00 00 00 00 00 00  f8 01 00 00 00 00 00 00  |................|
+00000070  08 00 00 00 00 00 00 00  03 00 00 00 04 00 00 00  |................|</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="execution-process">
+                    <h3><i class="fas fa-play-circle"></i> How Execution Works</h3>
+                    <div class="process-steps">
+                        <div class="process-step">
+                            <div class="process-number">1</div>
+                            <div class="process-desc">
+                                <h4>Loading</h4>
+                                <p>The operating system loads the executable into memory</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="process-number">2</div>
+                            <div class="process-desc">
+                                <h4>Dynamic Linking</h4>
+                                <p>Required libraries are loaded and linked</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="process-number">3</div>
+                            <div class="process-desc">
+                                <h4>Memory Setup</h4>
+                                <p>Stack, heap, and other memory regions are initialized</p>
+                            </div>
+                        </div>
+                        <div class="process-step">
+                            <div class="process-number">4</div>
+                            <div class="process-desc">
+                                <h4>Execution</h4>
+                                <p>CPU begins executing instructions from the entry point</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="full-journey">
+                    <h3><i class="fas fa-route"></i> The Complete Journey</h3>
+                    <div class="journey-diagram">
+                        <div class="journey-step">
+                            <div class="journey-icon">
+                                <i class="fas fa-pencil-alt"></i>
+                            </div>
+                            <div class="journey-title">Source Code</div>
+                            <div class="journey-desc">Human-readable code</div>
+                        </div>
+                        <div class="journey-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <div class="journey-step">
+                            <div class="journey-icon">
+                                <i class="fas fa-language"></i>
+                            </div>
+                            <div class="journey-title">Compilation</div>
+                            <div class="journey-desc">Translated to object code</div>
+                        </div>
+                        <div class="journey-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <div class="journey-step">
+                            <div class="journey-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div class="journey-title">Assembly</div>
+                            <div class="journey-desc">Converted to assembly</div>
+                        </div>
+                        <div class="journey-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <div class="journey-step">
+                            <div class="journey-icon">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <div class="journey-title">Binary</div>
+                            <div class="journey-desc">Executable machine code</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="navigation-buttons">
+                <a href="assembly.html" class="button"><i class="fas fa-arrow-left"></i> Previous: Assembly</a>
+                <a href="example.html" class="button next"><i class="fas fa-redo"></i> Next: Example</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Code Journey | A visual guide to how computers understand code</p>
+        </div>
+    </footer>
+
+    <!-- Add Prism JS for syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    
+    <script src="script.js"></script>
+</body>
+</html>
