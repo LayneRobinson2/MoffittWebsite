@@ -1,4 +1,11 @@
-/* Dark Theme Base Styles */
+/*
+*
+*	Layne Robinson
+*	File.:	styles.css
+*	Desc.:	The css code for the entire moffitt website
+*
+*/
+
 :root {
     --primary-color: #7289da;
     --secondary-color: #2c2f33;
@@ -37,7 +44,6 @@ body {
     padding: 0 15px;
 }
 
-/* Header Styles */
 header {
     background-color: var(--header-bg);
     color: white;
@@ -87,7 +93,6 @@ nav a {
     gap: 5px;
 }
 
-/* Main Content Styles */
 main {
     padding: 2rem 0;
 }
@@ -131,7 +136,6 @@ main {
     margin-bottom: 1.5rem;
 }
 
-/* Code Display */
 .visual-example {
     display: flex;
     flex-direction: column;
@@ -150,14 +154,14 @@ main {
 }
 
 .code-container {
-    flex: 1; /* Ensure it stretches in flex layout */
+    flex: 1; 
     width: 100%;
     background-color: var(--code-bg);
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
     display: flex;
-    flex-direction: column; /* Ensure header + code stack */
+    flex-direction: column;
 }
 
 .code-header {
@@ -218,7 +222,6 @@ code[class*="language-"] {
     gap: 10px;
 }
 
-/* Key Points */
 .key-points {
     background-color: var(--key-points-bg);
     padding: 20px;
@@ -259,7 +262,6 @@ code[class*="language-"] {
     margin-top: 3px;
 }
 
-/* Real World Analogy */
 .real-world {
     background-color: var(--real-world-bg);
     padding: 20px;
@@ -292,7 +294,6 @@ code[class*="language-"] {
     min-width: 100px;
 }
 
-/* Navigation Buttons */
 .navigation-buttons {
     display: flex;
     justify-content: space-between;
@@ -324,7 +325,6 @@ code[class*="language-"] {
     box-shadow: none;
 }
 
-/* Footer */
 footer {
     background-color: var(--header-bg);
     color: var(--light-text);
@@ -333,7 +333,6 @@ footer {
     margin-top: 2rem;
 }
 
-/* Dark theme scrollbar */
 ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
@@ -343,7 +342,6 @@ footer {
     background: #2c2f33;
 }
 
-/* Continuing the scrollbar styles */
 ::-webkit-scrollbar-thumb {
     background: #7289da;
     border-radius: 5px;
@@ -353,7 +351,6 @@ footer {
     background: #5b6eae;
 }
 
-/* Animations and Effects */
 .step-number {
     animation: pulse 2s infinite;
 }
@@ -370,7 +367,6 @@ footer {
     }
 }
 
-/* Button effects */
 .button.next {
     position: relative;
     overflow: hidden;
@@ -400,13 +396,11 @@ footer {
     }
 }
 
-/* Focus styles for accessibility */
 a:focus, button:focus {
     outline: 2px solid var(--primary-color);
     outline-offset: 2px;
 }
 
-/* Additional responsive adjustments */
 @media (max-width: 480px) {
     .step-header {
         flex-direction: column;
@@ -448,7 +442,6 @@ a:focus, button:focus {
     }
 }
 
-/* Code line numbers (optional) */
 pre.line-numbers {
     position: relative;
     padding-left: 3.8em;
@@ -500,29 +493,26 @@ pre.line-numbers > code {
     display: flex;
     align-items: center;
     border-bottom: 1px solid #444;
-    flex-shrink: 0; /* Prevent header from shrinking */
+    flex-shrink: 0;
 }
 
-/* Make the pre element take the remaining height */
 pre[class*="language-"] {
     margin: 0;
     border-radius: 0 0 8px 8px;
-    flex-grow: 1; /* Take up remaining space */
-    display: flex; /* Use flexbox for the pre element */
-    min-height: 200px; /* Minimum height */
+    flex-grow: 1; 
+    display: flex; 
+    min-height: 200px;
 }
 
-/* Make the code element fill the pre element */
 code[class*="language-"] {
     font-family: 'Fira Code', 'Courier New', Courier, monospace;
     font-size: 1rem;
-    padding: 20px !important; /* Override Prism's default padding */
-    flex-grow: 1; /* Take up all available space */
-    height: 100%; /* Fill the height */
-    box-sizing: border-box; /* Include padding in height calculation */
+    padding: 20px !important;
+    flex-grow: 1; 
+    height: 100%; 
+    box-sizing: border-box; 
 }
 
-/* Ensure the visual example container maintains proper height */
 .visual-example {
     display: flex;
     flex-direction: column;
@@ -533,7 +523,7 @@ code[class*="language-"] {
 @media (min-width: 768px) {
     .visual-example {
         flex-direction: row;
-        align-items: stretch; /* Make children stretch to fill height */
+        align-items: stretch; 
     }
     
     .code-container, .explanation-box {
@@ -543,7 +533,7 @@ code[class*="language-"] {
     }
     
     .explanation-box {
-        height: auto; /* Allow it to adjust to content */
+        height: auto;
     }
 }
 
@@ -552,7 +542,6 @@ code[class*="language-"] {
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Fade-in animation for content */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -562,7 +551,6 @@ code[class*="language-"] {
     animation: fadeIn 0.8s ease-out;
 }
 
-/* Tooltip for technical terms */
 [data-tooltip] {
     position: relative;
     cursor: help;
@@ -593,9 +581,6 @@ code[class*="language-"] {
     visibility: visible;
 }
 
-/* Add these styles to your existing styles.css file */
-
-/* Compiler Diagram */
 .compiler-diagram {
     background-color: var(--key-points-bg);
     padding: 20px;
@@ -658,12 +643,12 @@ code[class*="language-"] {
 .terminal {
     flex: 1;
     display: flex;
-    flex-direction: column; /* Stack header and content */
+    flex-direction: column;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
     margin: 1.5rem 0;
-    width: 100%; /* Ensure it takes full available width */
+    width: 100%;
 }
 
 
@@ -684,8 +669,8 @@ code[class*="language-"] {
 .terminal-content {
     flex: 1;
     background-color: #2d2d2d;
-    padding: 1rem; /* Add padding for consistency */
-    overflow-x: auto; /* Scroll if content overflows */
+    padding: 1rem; 
+    overflow-x: auto;
 }
 
 .terminal-content pre {
@@ -697,7 +682,6 @@ code[class*="language-"] {
     color: #f8f8f8;
 }
 
-/* Code example section */
 .code-example {
     margin: 2rem 0;
 }
@@ -710,7 +694,6 @@ code[class*="language-"] {
     gap: 10px;
 }
 
-/* Responsive adjustments for the diagram */
 @media (max-width: 768px) {
     .diagram {
         flex-direction: column;
@@ -727,7 +710,6 @@ code[class*="language-"] {
     }
 }
 
-/* Ordered list styling for explanation box */
 .explanation-box ol {
     margin-left: 20px;
     margin-top: 10px;
@@ -737,7 +719,6 @@ code[class*="language-"] {
     margin-bottom: 8px;
 }
 
-/* Animation for diagram steps */
 .diagram-step {
     animation: fadeIn 0.5s ease-out;
     animation-fill-mode: both;
@@ -748,14 +729,10 @@ code[class*="language-"] {
 .diagram-step:nth-child(5) { animation-delay: 0.5s; }
 .diagram-step:nth-child(7) { animation-delay: 0.7s; }
 
-/* Ensure code blocks in Step 2 have proper height */
 .code-container pre {
     min-height: 250px;
 }
 
-/* Add these styles to your existing styles.css file */
-
-/* Assembly diagram */
 .assembly-diagram {
     background-color: var(--key-points-bg);
     padding: 20px;
@@ -821,7 +798,6 @@ code[class*="language-"] {
     font-size: 1.5rem;
 }
 
-/* Register table */
 .register-table {
     margin: 2rem 0;
 }
@@ -864,13 +840,11 @@ tr:hover {
     background-color: rgba(114, 137, 218, 0.1);
 }
 
-/* Code highlighting for assembly */
 code.language-x86asm .keyword,
 code.language-x86asm .instruction {
     color: #569cd6;
 }
 
-/* Continuing the CSS for assembly language highlighting */
 code.language-x86asm .register {
     color: #9cdcfe;
 }
@@ -891,12 +865,10 @@ code.language-x86asm .number {
     color: #b5cea8;
 }
 
-/* Ensure code blocks in Step 3 have proper height */
 .code-container pre {
     min-height: 300px;
 }
 
-/* Animation for level diagram */
 .level {
     animation: fadeInUp 0.5s ease-out;
     animation-fill-mode: both;
@@ -917,7 +889,6 @@ code.language-x86asm .number {
     }
 }
 
-/* Responsive adjustments for the assembly diagram */
 @media (max-width: 768px) {
     .level {
         max-width: 100%;
@@ -933,7 +904,6 @@ code.language-x86asm .number {
     }
 }
 
-/* Inline code styling */
 code {
     background-color: rgba(0, 0, 0, 0.2);
     padding: 2px 5px;
@@ -942,7 +912,6 @@ code {
     font-size: 0.9em;
 }
 
-/* Tooltip for assembly instructions */
 .instruction-tooltip {
     position: relative;
     cursor: help;
@@ -973,7 +942,6 @@ code {
     visibility: visible;
 }
 
-/* Enhanced table styling */
 .table-container {
     position: relative;
     overflow: hidden;
@@ -997,7 +965,6 @@ code {
     opacity: 1;
 }
 
-/* Highlight current row in table */
 tr {
     transition: background-color 0.3s;
 }
@@ -1006,7 +973,6 @@ tr:hover td {
     background-color: rgba(114, 137, 218, 0.2);
 }
 
-/* Improve code readability */
 .level-code {
     position: relative;
 }
@@ -1023,9 +989,6 @@ tr:hover td {
     border-radius: 4px;
 }
 
-/* Add these styles to your existing styles.css file */
-
-/* Binary structure diagram */
 .binary-diagram {
     background-color: var(--key-points-bg);
     padding: 20px;
@@ -1096,7 +1059,6 @@ tr:hover td {
     border-left: 5px solid #ec4899;
 }
 
-/* Binary viewer */
 .binary-viewer {
     margin: 2rem 0;
 }
@@ -1109,7 +1071,6 @@ tr:hover td {
     gap: 10px;
 }
 
-/* Execution process */
 .execution-process {
     margin: 2rem 0;
 }
@@ -1166,7 +1127,6 @@ tr:hover td {
     margin: 0;
 }
 
-/* Full journey diagram */
 .full-journey {
     margin: 2rem 0;
 }
@@ -1231,7 +1191,6 @@ tr:hover td {
     align-items: center;
 }
 
-/* Animation for journey steps */
 .journey-step {
     animation: fadeIn 0.5s ease-out;
     animation-fill-mode: both;
@@ -1242,7 +1201,6 @@ tr:hover td {
 .journey-step:nth-child(5) { animation-delay: 0.5s; }
 .journey-step:nth-child(7) { animation-delay: 0.7s; }
 
-/* Animation for process steps */
 .process-step {
     animation: slideInRight 0.5s ease-out;
     animation-fill-mode: both;
@@ -1264,7 +1222,6 @@ tr:hover td {
     }
 }
 
-/* Animation for binary structure */
 .structure-section {
     animation: slideInLeft 0.5s ease-out;
     animation-fill-mode: both;
@@ -1288,7 +1245,6 @@ tr:hover td {
     }
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .journey-diagram {
         flex-direction: column;
@@ -1313,21 +1269,16 @@ tr:hover td {
     }
 }
 
-/* Ensure code blocks in Step 4 have proper height */
 .code-container pre {
     min-height: 300px;
 }
 
-/* Binary code styling */
 code.language-text {
     font-family: 'Fira Code', 'Courier New', Courier, monospace;
     letter-spacing: 1px;
     line-height: 1.6;
 }
 
-/* Add these styles to your existing styles.css file */
-
-/* Example App Styles */
 .example-app {
     display: flex;
     flex-wrap: wrap;
@@ -1425,7 +1376,6 @@ code.language-text {
     background-color: #5865f2;
 }
 
-/* Journey Step Container */
 .journey-step-container {
     margin-bottom: 30px;
     border-left: 3px solid var(--primary-color);
@@ -1488,7 +1438,6 @@ code.language-text {
     margin-bottom: 0;
 }
 
-/* Program Execution */
 .program-execution {
     margin-top: 20px;
 }
@@ -1501,7 +1450,6 @@ code.language-text {
     margin-bottom: 15px;
 }
 
-/* Behind the Scenes */
 .behind-scenes {
     margin: 2rem 0;
     background-color: var(--key-points-bg);
@@ -1518,7 +1466,6 @@ code.language-text {
     gap: 10px;
 }
 
-/* Process Visualization */
 .process-visualization {
     margin-bottom: 30px;
 }
@@ -1596,7 +1543,6 @@ code.language-text {
     color: #f44336;
 }
 
-/* Memory Representation */
 .memory-representation {
     margin-top: 30px;
 }
@@ -1659,7 +1605,6 @@ code.language-text {
     color: #2196f3;
 }
 
-/* Interactive Demo */
 .interactive-demo {
     margin: 2rem 0;
 }
@@ -1732,7 +1677,6 @@ code.language-text {
     background-color: #5865f2;
 }
 
-/* Code Execution Visualization */
 .code-execution {
     margin-top: 30px;
 }
@@ -1782,7 +1726,6 @@ code.language-text {
     background-color: var(--primary-color);
 }
 
-/* Summary */
 .summary {
     margin: 2rem 0;
     background-color: var(--key-points-bg);
@@ -1811,7 +1754,6 @@ code.language-text {
     margin-bottom: 0;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .process-flow {
         flex-direction: column;
@@ -1837,7 +1779,6 @@ code.language-text {
     }
 }
 
-/* Animations */
 .journey-step-container {
     animation: fadeIn 0.5s ease-out;
     animation-fill-mode: both;
