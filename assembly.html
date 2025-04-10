@@ -6,7 +6,6 @@
     <title>From Source Code to Binary: Step 3</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Add Prism CSS for dark theme -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
 </head>
 <body>
@@ -24,7 +23,6 @@
             </nav>
         </div>
     </header>
-
     <main class="container">
         <section class="step-content">
             <div class="step-header">
@@ -33,7 +31,7 @@
             </div>
             
             <div class="explanation">
-                <p>Assembly is the process of converting object code into machine code (assembly language), which is a low-level representation of the program that's very close to the actual binary instructions the CPU understands.</p>
+                <p>Assembly is the process of translating our code into a simpler language that's closer to what computers actually understand. Think of it as the bridge between human-friendly code and computer-friendly instructions.</p>
                 
                 <div class="visual-example">
                     <div class="code-container">
@@ -43,56 +41,56 @@
                             <span class="dot green"></span>
                             <span class="filename">helloWorld.o → Assembly</span>
                         </div>
-                        <pre><code class="language-x86asm">; Assembly code for "Hello, World!" (x86-64)
+                        <pre><code class="language-x86asm">; Assembly code for "Hello, World!"
 section .data
-    hello db "Hello, World!", 10, 0  ; String with newline and null terminator
+    hello db "Hello, World!", 10, 0  ; Our message with a newline
 
 section .text
     global main
     extern printf
 
 main:
-    ; Function prologue
+    ; Save where we were
     push rbp
     mov rbp, rsp
     
-    ; Call printf with our string
-    lea rdi, [hello]  ; First argument: address of string
-    xor eax, eax      ; Zero RAX (varargs function)
-    call printf
+    ; Print our message
+    lea rdi, [hello]  ; Load the address of our message
+    xor eax, eax      ; Clear a register (technical requirement)
+    call printf       ; Call the print function
     
-    ; Return 0
+    ; Return 0 (success)
     xor eax, eax
     
-    ; Function epilogue
+    ; Restore where we were and return
     pop rbp
     ret</code></pre>
                     </div>
                     
                     <div class="explanation-box">
                         <h3><i class="fas fa-microchip"></i> What is Assembly?</h3>
-                        <p>Assembly language is a low-level programming language that's specific to a particular computer architecture. It represents machine code instructions in a human-readable form.</p>
-                        <p>The assembly process takes the object code from compilation and converts it into these architecture-specific instructions. These instructions directly correspond to the operations that the CPU can perform.</p>
-                        <p>Assembly language uses mnemonics like <code>mov</code>, <code>push</code>, and <code>call</code> to represent machine operations.</p>
+                        <p>Assembly language is like giving very simple, step-by-step instructions to the computer. It's the last human-readable form before turning into pure numbers (machine code).</p>
+                        <p>Each line in assembly is a single, basic instruction like "move this value here" or "add these numbers." These simple commands are what the computer's brain (CPU) can directly understand.</p>
+                        <p>Different computer types (like Intel vs. ARM) speak different "dialects" of assembly language, just like different regions might have different dialects of a language.</p>
                     </div>
                 </div>
                 
                 <div class="key-points">
                     <h3><i class="fas fa-key"></i> Key Points About Assembly:</h3>
                     <ul>
-                        <li><i class="fas fa-check-circle"></i> <strong>Architecture-Specific:</strong> Assembly code is different for each CPU architecture (x86, ARM, etc.)</li>
-                        <li><i class="fas fa-check-circle"></i> <strong>One-to-One Mapping:</strong> Each assembly instruction typically maps to one machine code instruction</li>
-                        <li><i class="fas fa-check-circle"></i> <strong>Registers:</strong> Assembly code works directly with CPU registers (like <code>eax</code>, <code>rbp</code>)</li>
-                        <li><i class="fas fa-check-circle"></i> <strong>Memory Management:</strong> Explicit control over memory addresses and operations</li>
-                        <li><i class="fas fa-check-circle"></i> <strong>Assembler:</strong> A program that converts assembly language to machine code</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Super Simple Instructions:</strong> Each line does just one basic thing</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Computer-Specific:</strong> Different computer types use different assembly languages</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Memory Boxes:</strong> Uses special storage locations called "registers" (like temporary sticky notes for the CPU)</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Direct Control:</strong> Gives precise instructions about where to store and move data</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Final Translation:</strong> Gets converted directly into the numbers (machine code) that computers run</li>
                     </ul>
                 </div>
                 
                 <div class="assembly-diagram">
-                    <h3><i class="fas fa-project-diagram"></i> From High-Level to Low-Level</h3>
+                    <h3><i class="fas fa-project-diagram"></i> From Human-Friendly to Computer-Friendly</h3>
                     <div class="level-diagram">
                         <div class="level">
-                            <div class="level-title">High-Level</div>
+                            <div class="level-title">What You Write</div>
                             <div class="level-code">
                                 <pre><code class="language-c">printf("Hello, World!");</code></pre>
                             </div>
@@ -101,7 +99,7 @@ main:
                             <i class="fas fa-arrow-down"></i>
                         </div>
                         <div class="level">
-                            <div class="level-title">Assembly</div>
+                            <div class="level-title">Assembly (Middle Step)</div>
                             <div class="level-code">
                                 <pre><code class="language-x86asm">lea rdi, [hello]
 call printf</code></pre>
@@ -111,7 +109,7 @@ call printf</code></pre>
                             <i class="fas fa-arrow-down"></i>
                         </div>
                         <div class="level">
-                            <div class="level-title">Machine Code</div>
+                            <div class="level-title">What the Computer Sees</div>
                             <div class="level-code">
                                 <pre><code class="language-text">48 8D 3D E8 0D 00 00
 E8 C3 FE FF FF</code></pre>
@@ -127,15 +125,17 @@ E8 C3 FE FF FF</code></pre>
                             <i class="fas fa-tools"></i>
                         </div>
                         <div class="analogy-text">
-                            <p>If compilation is like translating a book from English to Spanish, assembly is like breaking down that Spanish text into very specific, step-by-step instructions for someone who only understands basic Spanish commands.</p>
-                            <p>Imagine you're giving directions to someone who doesn't speak your language well. Instead of saying "Go to the grocery store," you'd need to say "Turn right. Walk 100 steps. Turn left. Walk 50 steps." Assembly language is similarly explicit and detailed, leaving no room for interpretation.</p>
+                            <p>Imagine you're giving directions to a robot that only understands very basic commands.</p>
+                            <p>Instead of saying "Go to the kitchen and make a sandwich," you'd need to say:</p>
+                            <p>"Turn right. Walk 10 steps. Turn left. Open the refrigerator door. Grab the bread with your right hand..." and so on.</p>
+                            <p>Assembly is like these super detailed, step-by-step instructions that leave no room for interpretation. The computer needs this level of detail because it can't "figure things out" like humans can.</p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="code-example">
                     <h3><i class="fas fa-terminal"></i> Assembly in Action</h3>
-                    <p>Here's how you might view the assembly code generated from a compiled program:</p>
+                    <p>Here's how you might see what assembly code looks like for a program:</p>
                     <div class="terminal">
                         <div class="terminal-header">
                             <span class="dot red"></span>
@@ -144,11 +144,10 @@ E8 C3 FE FF FF</code></pre>
                             <span class="terminal-title">Terminal</span>
                         </div>
                         <div class="terminal-content">
-                            <pre><code class="language-bash">
-# Compile C code to object file
+                            <pre><code class="language-bash"># Convert our program to see the assembly
 gcc -c hello.c -o hello.o
                         
-# View the assembly code generated
+# Look at the assembly instructions
 objdump -d hello.o
                         
 hello.o:     file format elf64-x86-64
@@ -160,81 +159,66 @@ Disassembly of section .text:
 1:   48 89 e5                mov    %rsp,%rbp
 4:   48 8d 3d 00 00 00 00    lea    0x0(%rip),%rdi
 b:   b0 00                   mov    $0x0,%al
-d:   e8 00 00 00 00          call   12 
-<main+0x12>
+d:   e8 00 00 00 00          call   12 <main+0x12>
 12:   b8 00 00 00 00          mov    $0x0,%eax
 17:   5d                      pop    %rbp
 18:   c3                      ret</code></pre>
-                          </div>
-                        </div>
+                      </div>
+                    </div>
                 </div>
                 
                 <div class="register-table">
-                    <h3><i class="fas fa-microchip"></i> Common x86-64 Registers</h3>
+                    <h3><i class="fas fa-microchip"></i> CPU's "Sticky Notes" (Registers)</h3>
+                    <p>The CPU has a few special places to store information temporarily while it works. Think of these like sticky notes that the CPU can read and write to very quickly:</p>
                     <div class="table-container">
                         <table>
                             <thead>
                                 <tr>
                                     <th>Register</th>
-                                    <th>Purpose</th>
+                                    <th>What It's Used For</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>RAX, EAX</td>
-                                    <td>Accumulator, used for arithmetic operations and return values</td>
-                                </tr>
-                                <tr>
-                                    <td>RBX, EBX</td>
-                                    <td>Base register, sometimes used as a pointer to data</td>
-                                </tr>
-                                <tr>
-                                    <td>RCX, ECX</td>
-                                    <td>Counter register, often used in loops</td>
-                                </tr>
-                                <tr>
-                                    <td>RDX, EDX</td>
-                                    <td>Data register, used in arithmetic operations and I/O operations</td>
+                                    <td>The "answer" register - often holds calculation results and return values</td>
                                 </tr>
                                 <tr>
                                     <td>RSP, ESP</td>
-                                    <td>Stack Pointer, points to the top of the stack</td>
+                                    <td>The "stack pointer" - keeps track of where we are in the program's temporary storage area</td>
                                 </tr>
                                 <tr>
                                     <td>RBP, EBP</td>
-                                    <td>Base Pointer, points to the base of the stack frame</td>
+                                    <td>The "base pointer" - helps keep track of function information</td>
                                 </tr>
                                 <tr>
-                                    <td>RSI, ESI</td>
-                                    <td>Source Index, used as a pointer to source in string operations</td>
+                                    <td>RDI, RSI</td>
+                                    <td>Used to pass information to functions (like passing arguments)</td>
                                 </tr>
                                 <tr>
-                                    <td>RDI, EDI</td>
-                                    <td>Destination Index, used as a pointer to destination in string operations</td>
+                                    <td>RCX</td>
+                                    <td>Often used as a counter for loops (the "C" is for "Counter")</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
+                    <p>Don't worry about memorizing these! This is just to give you an idea of how the CPU organizes its work.</p>
                 </div>
             </div>
             
             <div class="navigation-buttons">
-                <a href="assembly.html" class="button"><i class="fas fa-arrow-left"></i> Previous: Compilation</a>
+                <a href="compilation.html" class="button"><i class="fas fa-arrow-left"></i> Previous: Compilation</a>
                 <a href="binary.html" class="button next"><i class="fas fa-arrow-right"></i> Next: Executable Binary</a>
             </div>
         </section>
     </main>
-
     <footer>
         <div class="container">
-            <p>&copy; 2023 Code Journey | A visual guide to how computers understand code</p>
+            <p>&copy; 2025 Layne Robinson | From Source Code To Binary</p>
         </div>
     </footer>
-
-    <!-- Add Prism JS for syntax highlighting -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
-    
     <script src="script.js"></script>
 </body>
 </html>
